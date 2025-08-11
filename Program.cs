@@ -14,7 +14,7 @@ internal class Program
             var serviceUsuarios = new UsuarioService(repoUsuarios);
 
             // Solo si no existe el admin
-            var adminExistente = serviceUsuarios.Login("admin", "1234");
+            var adminExistente = serviceUsuarios.Login("1", "1234");
             if (adminExistente == null)
             {
                 serviceUsuarios.RegistrarAdmin("admin", "1234");

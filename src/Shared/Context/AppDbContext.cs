@@ -6,19 +6,15 @@ namespace ColombianCoffeeApp.src.Shared.Context
 {
     public class AppDbContext : DbContext
     {
-        public DbSet<VariedadCafe> Variedades { get; set; }
-        public DbSet<Usuario> Usuarios { get; set; }
+         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
+    {
+    }
+    public DbSet<Usuario> Usuarios => Set<Usuario>();
+    public DbSet<VariedadCafe> Variedades => Set<VariedadCafe>();
 
-        public AppDbContext(DbContextOptions<AppDbContext> options)
-            : base(options)
-        {
-        }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            base.OnModelCreating(modelBuilder);
-
-            modelBuilder.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);
         }
     }
 }

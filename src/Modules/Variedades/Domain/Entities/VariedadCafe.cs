@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ColombianCoffeeApp.src.Modules.Variedades.Domain.Entities
-{
+namespace ColombianCoffeeApp.src.Modules.Variedades.Domain.Entities;
+//[Table("variedad")]
     public class VariedadCafe
     {
         public int Id { get; set; }
@@ -16,7 +16,7 @@ namespace ColombianCoffeeApp.src.Modules.Variedades.Domain.Entities
         public string? TamanoGrano { get; set; } 
         public int AltitudOptima { get; set; }
         public string? Rendimiento { get; set; }
-        public string? CalidadGrano { get; set; } 
+        public int CalidadGrano { get; set; } 
         public string? ResistenciaRoya { get; set; } 
         public string? ResistenciaAntracnosis { get; set; }
         public string? ResistenciaNematodos { get; set; }
@@ -29,4 +29,3 @@ namespace ColombianCoffeeApp.src.Modules.Variedades.Domain.Entities
         public string? Obtentor { get; set; }
         public string? Familia { get; set; }
     }
-}

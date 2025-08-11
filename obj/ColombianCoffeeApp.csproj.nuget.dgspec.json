@@ -1,30 +1,30 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Maria Cristina\\ColombianCoffeeApp\\ColombianCoffeeApp.csproj": {}
+    "/home/camper/BorradoColombianCoffee/ColombianCoffeeApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Maria Cristina\\ColombianCoffeeApp\\ColombianCoffeeApp.csproj": {
+    "/home/camper/BorradoColombianCoffee/ColombianCoffeeApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Maria Cristina\\ColombianCoffeeApp\\ColombianCoffeeApp.csproj",
+        "projectUniqueName": "/home/camper/BorradoColombianCoffee/ColombianCoffeeApp.csproj",
         "projectName": "ColombianCoffeeApp",
-        "projectPath": "C:\\Users\\Maria Cristina\\ColombianCoffeeApp\\ColombianCoffeeApp.csproj",
-        "packagesPath": "C:\\Users\\Maria Cristina\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Maria Cristina\\ColombianCoffeeApp\\obj\\",
+        "projectPath": "/home/camper/BorradoColombianCoffee/ColombianCoffeeApp.csproj",
+        "packagesPath": "/home/camper/.nuget/packages/",
+        "outputPath": "/home/camper/BorradoColombianCoffee/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Maria Cristina\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "/home/camper/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
-          "net8.0"
+          "net9.0"
         ],
         "sources": {
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net8.0": {
-            "targetAlias": "net8.0",
+          "net9.0": {
+            "targetAlias": "net9.0",
             "projectReferences": {}
           }
         },
@@ -37,27 +37,32 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        }
+        },
+        "SdkAnalysisLevel": "9.0.200"
       },
       "frameworks": {
-        "net8.0": {
-          "targetAlias": "net8.0",
+        "net9.0": {
+          "targetAlias": "net9.0",
           "dependencies": {
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[8.0.13, )"
+              "version": "[9.0.8, )"
             },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[8.0.13, )"
+              "version": "[9.0.8, )"
             },
             "Microsoft.EntityFrameworkCore.Relational": {
               "target": "Package",
-              "version": "[8.0.13, )"
+              "version": "[9.0.8, )"
             },
             "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[9.0.8, )"
+            },
+            "Microsoft.Extensions.Configuration.EnvironmentVariables": {
               "target": "Package",
               "version": "[9.0.8, )"
             },
@@ -75,7 +80,7 @@
             },
             "Pomelo.EntityFrameworkCore.MySql": {
               "target": "Package",
-              "version": "[8.0.3, )"
+              "version": "[9.0.0-rc.1.efcore.9.0.0, )"
             }
           },
           "imports": [
@@ -94,7 +99,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.412/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/9.0.203/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
