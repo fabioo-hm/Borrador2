@@ -20,12 +20,17 @@ namespace ColombianCoffeeApp.src.Presentation
             while (true)
             {
                 Console.Clear();
-                Console.WriteLine("=== COLOMBIAN COFFEE ☕ ===");
-                Console.WriteLine("1. Explorar variedades (Cliente)");
-                Console.WriteLine("2. Ingresar como Administrador");
-                Console.WriteLine("0. Salir");
-                Console.Write("Seleccione una opción: ");
-
+                Console.Write("""
+                    ╔══════════════════════════════════════════╗
+                    ║          🌿 COLOMBIAN COFFEE 🌿          ║
+                    ╚══════════════════════════════════════════╝
+                    ║ 1.- Explorar Variedades (Cliente)        ║
+                    ║ 2.- Ingresar como 'Administrador'        ║
+                    ║ 3.- Salir                                ║
+                    ╚══════════════════════════════════════════╝
+                    Seleccione la opción: 
+                    """
+                    );
                 var opcion = Console.ReadLine();
 
                 switch (opcion)
@@ -36,7 +41,7 @@ namespace ColombianCoffeeApp.src.Presentation
                     case "2":
                         MenuAdministrador();
                         break;
-                    case "0":
+                    case "3":
                         return;
                     default:
                         Console.WriteLine("Opción inválida. Presione una tecla...");

@@ -20,13 +20,19 @@ namespace ColombianCoffeeApp.src.Modules.Variedades.UI
             while (true)
             {
                 Console.Clear();
-                Console.WriteLine("=== ADMINISTRACIÓN DE VARIEDADES ===");
-                Console.WriteLine("1. Crear nueva variedad");
-                Console.WriteLine("2. Editar variedad");
-                Console.WriteLine("3. Eliminar variedad");
-                Console.WriteLine("4. Listar variedades");
-                Console.WriteLine("0. Volver");
-                Console.Write("Seleccione una opción: ");
+                Console.Write("""
+                    ╔════════════════════════════════════════════╗
+                    ║     🔐 ADMINISTRACIÓN DE VARIEDADES 🔐     ║
+                    ╚════════════════════════════════════════════╝
+                    ║ 1.- Crear Nueva Variedad                   ║
+                    ║ 2.- Editar Variedad                        ║
+                    ║ 3.- Eliminar Variedad                      ║
+                    ║ 4.- Listar Variedadades                    ║
+                    ║ 5.- Regresar ↩                             ║
+                    ╚════════════════════════════════════════════╝
+                    Seleccione la opción: 
+                    """
+                    );
                 var opcion = Console.ReadLine();
 
                 switch (opcion)
@@ -43,7 +49,7 @@ namespace ColombianCoffeeApp.src.Modules.Variedades.UI
                     case "4":
                         ListarVariedades();
                         break;
-                    case "0":
+                    case "5":
                         return;
                     default:
                         Console.WriteLine("Opción inválida. Presione una tecla...");

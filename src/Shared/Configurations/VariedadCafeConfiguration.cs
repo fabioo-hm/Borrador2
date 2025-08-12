@@ -1,14 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using ColombianCoffeeApp.src.Modules.Variedades.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace BorradoColombianCoffee.src.Shared.Configurations
 {
-    public class VariedadCafeConfiguration
+    public class VariedadCafeConfiguration : IEntityTypeConfiguration<VariedadCafe>
     {
         public void Configure(EntityTypeBuilder<VariedadCafe> builder)
         {
@@ -19,6 +15,10 @@ namespace BorradoColombianCoffee.src.Shared.Configurations
             builder.Property(v => v.NombreComun)
                 .IsRequired()
                 .HasMaxLength(100);
+
+            builder.Property(v => v.Descripcion)
+                .IsRequired()
+                .HasColumnType("TEXT");
 
             builder.Property(v => v.NombreCientifico)
                 .IsRequired()
@@ -91,11 +91,10 @@ namespace BorradoColombianCoffee.src.Shared.Configurations
             builder.Property(v => v.Obtentor)
                 .IsRequired()
                 .HasMaxLength(100);
-            
+
             builder.Property(v => v.Familia)
                 .IsRequired()
                 .HasMaxLength(100);
-  
         }
     }
 }

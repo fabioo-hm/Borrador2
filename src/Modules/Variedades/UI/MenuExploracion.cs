@@ -20,12 +20,18 @@ namespace ColombianCoffeeApp.src.Modules.Variedades.UI
             while (true)
             {
                 Console.Clear();
-                Console.WriteLine("=== EXPLORAR VARIEDADES DE CAFÉ ===");
-                Console.WriteLine("1. Listar todas");
-                Console.WriteLine("2. Ver ficha técnica por ID");
-                Console.WriteLine("3. Filtrar por atributo");
-                Console.WriteLine("0. Volver al menú principal");
-                Console.Write("Seleccione una opción: ");
+                Console.Write("""
+                    ╔════════════════════════════════════════════╗
+                    ║     👀 EXPLORAR VARIEDADES DE CAFÉ 👀      ║
+                    ╚════════════════════════════════════════════╝
+                    ║ 1.- Listar Todas las Variables             ║
+                    ║ 2.- Ver Ficha Técnica (ID)                 ║
+                    ║ 3.- Filtrar por Atributo                   ║
+                    ║ 4.- Volver a 'Menú Principal' ↩            ║
+                    ╚════════════════════════════════════════════╝
+                    Seleccione la opción: 
+                    """
+                    );
                 var opcion = Console.ReadLine();
 
                 switch (opcion)
@@ -39,7 +45,7 @@ namespace ColombianCoffeeApp.src.Modules.Variedades.UI
                     case "3":
                         FiltrarPorAtributo();
                         break;
-                    case "0":
+                    case "4":
                         return;
                     default:
                         Console.WriteLine("Opción inválida. Presione una tecla...");
@@ -135,25 +141,28 @@ namespace ColombianCoffeeApp.src.Modules.Variedades.UI
         private void MostrarFichaTecnica(VariedadCafe v)
         {
             Console.Clear();
-            Console.WriteLine($"=== Ficha Técnica de {v.NombreComun} ===");
-            Console.WriteLine($"Nombre Científico: {v.NombreCientifico}");
-            Console.WriteLine($"Descripción: {v.Descripcion}");
-            Console.WriteLine($"Porte: {v.Porte}");
-            Console.WriteLine($"Tamaño del Grano: {v.TamanoGrano}");
-            Console.WriteLine($"Altitud Óptima: {v.AltitudOptima} msnm");
-            Console.WriteLine($"Rendimiento: {v.Rendimiento}");
-            Console.WriteLine($"Calidad del Grano: {v.CalidadGrano}");
-            Console.WriteLine($"Resistencia a Roya: {v.ResistenciaRoya}");
-            Console.WriteLine($"Resistencia a Antracnosis: {v.ResistenciaAntracnosis}");
-            Console.WriteLine($"Resistencia a Nematodos: {v.ResistenciaNematodos}");
-            Console.WriteLine($"Tiempo de Cosecha: {v.TiempoCosecha}");
-            Console.WriteLine($"Tiempo de Maduración: {v.TiempoMaduracion}");
-            Console.WriteLine($"Recomendación Nutricional: {v.RecomendacionNutricion}");
-            Console.WriteLine($"Densidad de Siembra: {v.DensidadSiembra}");
-            Console.WriteLine($"Historia: {v.Historia}");
-            Console.WriteLine($"Grupo Genético: {v.GrupoGenetico}");
-            Console.WriteLine($"Obtentor: {v.Obtentor}");
-            Console.WriteLine($"Familia: {v.Familia}");
+            Console.WriteLine($"╔══════════════════════════════════════════════════════════════════════════════════════════════════════╗");
+            Console.WriteLine($"                                            Ficha Técnica de {v.NombreComun}                            ");
+            Console.WriteLine($"╚══════════════════════════════════════════════════════════════════════════════════════════════════════╝");
+            Console.WriteLine($"║ Nombre Científico         ║ { v.NombreCientifico}");
+            Console.WriteLine($"║ Descripción               ║ { v.Descripcion}");
+            Console.WriteLine($"║ Porte                     ║ { v.Porte}");
+            Console.WriteLine($"║ Tamaño del Grano          ║ { v.TamanoGrano}");
+            Console.WriteLine($"║ Altitud Óptima            ║ { v.AltitudOptima} msnm");
+            Console.WriteLine($"║ Rendimiento               ║ { v.Rendimiento}");
+            Console.WriteLine($"║ Calidad del Grano         ║ { v.CalidadGrano}");
+            Console.WriteLine($"║ Resistencia a Roya        ║ { v.ResistenciaRoya}");
+            Console.WriteLine($"║ Resistencia a Antracnosis ║ { v.ResistenciaAntracnosis}");
+            Console.WriteLine($"║ Resistencia a Nematodos   ║ { v.ResistenciaNematodos}");
+            Console.WriteLine($"║ Tiempo de Cosecha         ║ { v.TiempoCosecha}");
+            Console.WriteLine($"║ Tiempo de Maduración      ║ { v.TiempoMaduracion}");
+            Console.WriteLine($"║ Recomendación Nutricional ║ { v.RecomendacionNutricion}");
+            Console.WriteLine($"║ Densidad de Siembra       ║ { v.DensidadSiembra}");
+            Console.WriteLine($"║ Historia                  ║ { v.Historia}");
+            Console.WriteLine($"║ Grupo Genético            ║ { v.GrupoGenetico}");
+            Console.WriteLine($"║ Obtentor                  ║ { v.Obtentor}");
+            Console.WriteLine($"║ Familia                   ║ { v.Familia}");
+            Console.WriteLine($"╚══════════════════════════════════════════════════════════════════════════════════════════════════════╝");
         }
     }
 }

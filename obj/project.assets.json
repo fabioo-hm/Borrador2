@@ -4507,19 +4507,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Maria Cristina\\.nuget\\packages\\": {}
+    "/home/camper/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Maria Cristina\\Borrador2\\ColombianCoffeeApp.csproj",
+      "projectUniqueName": "/home/camper/Borrador2/ColombianCoffeeApp.csproj",
       "projectName": "ColombianCoffeeApp",
-      "projectPath": "C:\\Users\\Maria Cristina\\Borrador2\\ColombianCoffeeApp.csproj",
-      "packagesPath": "C:\\Users\\Maria Cristina\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Maria Cristina\\Borrador2\\obj\\",
+      "projectPath": "/home/camper/Borrador2/ColombianCoffeeApp.csproj",
+      "packagesPath": "/home/camper/.nuget/packages/",
+      "outputPath": "/home/camper/Borrador2/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Maria Cristina\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "/home/camper/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net9.0"
@@ -4543,7 +4543,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.300"
+      "SdkAnalysisLevel": "9.0.200"
     },
     "frameworks": {
       "net9.0": {
@@ -4604,7 +4604,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/9.0.203/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
