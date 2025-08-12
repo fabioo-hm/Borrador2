@@ -1,10 +1,12 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
+using Borrador2.src.Modules.Variedades.Domain;
 
 namespace ColombianCoffeeApp.src.Modules.Variedades.Domain.Entities;
-//[Table("variedad")]
+    [Table("variedad")]
     public class VariedadCafe
     {
         public int Id { get; set; }
@@ -12,14 +14,14 @@ namespace ColombianCoffeeApp.src.Modules.Variedades.Domain.Entities;
         public string? Descripcion { get; set; }
         public string? NombreCientifico { get; set; }
         public string? RutaImagen { get; set; }
-        public string? Porte { get; set; }
-        public string? TamanoGrano { get; set; } 
+        public PorteVariedad Porte { get; set; }
+        public TamanoGranoVariedad TamanoGrano { get; set; } 
         public int AltitudOptima { get; set; }
-        public string? Rendimiento { get; set; }
+        public RendimientoVariedad Rendimiento { get; set; }
         public int CalidadGrano { get; set; } 
-        public string? ResistenciaRoya { get; set; } 
-        public string? ResistenciaAntracnosis { get; set; }
-        public string? ResistenciaNematodos { get; set; }
+        public RoyaVariedad ResistenciaRoya { get; set; } 
+        public AntracnosisVariedad ResistenciaAntracnosis { get; set; }
+        public NematodosVariedad ResistenciaNematodos { get; set; }
         public string? TiempoCosecha { get; set; }
         public string? TiempoMaduracion { get; set; }
         public string? RecomendacionNutricion { get; set; }

@@ -15,26 +15,26 @@ namespace ColombianCoffeeApp.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "Usuarios",
+                name: "usuario",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    NombreUsuario = table.Column<string>(type: "longtext", nullable: true)
+                    NombreUsuario = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Contrasena = table.Column<string>(type: "longtext", nullable: true)
+                    Contrasena = table.Column<string>(type: "varchar(8)", maxLength: 8, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Rol = table.Column<string>(type: "longtext", nullable: true)
+                    Rol = table.Column<string>(type: "varchar(20)", maxLength: 20, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Usuarios", x => x.Id);
+                    table.PrimaryKey("PK_usuario", x => x.Id);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "Variedades",
+                name: "variedad",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -47,21 +47,14 @@ namespace ColombianCoffeeApp.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     RutaImagen = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Porte = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    TamanoGrano = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Porte = table.Column<int>(type: "int", nullable: false),
+                    TamanoGrano = table.Column<int>(type: "int", nullable: false),
                     AltitudOptima = table.Column<int>(type: "int", nullable: false),
-                    Rendimiento = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    CalidadGrano = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    ResistenciaRoya = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    ResistenciaAntracnosis = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    ResistenciaNematodos = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Rendimiento = table.Column<int>(type: "int", nullable: false),
+                    CalidadGrano = table.Column<int>(type: "int", nullable: false),
+                    ResistenciaRoya = table.Column<int>(type: "int", nullable: false),
+                    ResistenciaAntracnosis = table.Column<int>(type: "int", nullable: false),
+                    ResistenciaNematodos = table.Column<int>(type: "int", nullable: false),
                     TiempoCosecha = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     TiempoMaduracion = table.Column<string>(type: "longtext", nullable: true)
@@ -81,7 +74,7 @@ namespace ColombianCoffeeApp.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Variedades", x => x.Id);
+                    table.PrimaryKey("PK_variedad", x => x.Id);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
         }
@@ -90,10 +83,10 @@ namespace ColombianCoffeeApp.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Usuarios");
+                name: "usuario");
 
             migrationBuilder.DropTable(
-                name: "Variedades");
+                name: "variedad");
         }
     }
 }

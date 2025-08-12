@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using ColombianCoffeeApp.src.Shared.Context;
 using ColombianCoffeeApp.src.Modules.Variedades.Domain.Entities;
+using Borrador2.src.Modules.Variedades.Domain; // para que reconozca los enums
 
 namespace ColombianCoffeeApp
 {
@@ -18,14 +19,14 @@ namespace ColombianCoffeeApp
                         NombreComun = "Castillo",
                         NombreCientifico = "Coffea arabica var. Castillo",
                         Descripcion = "Alta resistencia a la roya, porte medio y buena calidad de taza.",
-                        Porte = "Medio",
-                        TamanoGrano = "Grande",
+                        Porte = PorteVariedad.Alto,
+                        TamanoGrano = TamanoGranoVariedad.Grande,
                         AltitudOptima = 1800,
-                        Rendimiento = "Alto",
-                        CalidadGrano = "Alta",
-                        ResistenciaRoya = "Alta",
-                        ResistenciaAntracnosis = "Media",
-                        ResistenciaNematodos = "Baja",
+                        Rendimiento = RendimientoVariedad.Alto,
+                        CalidadGrano = 5, // o el valor que uses para representar "Alta"
+                        ResistenciaRoya = RoyaVariedad.Suseptible,
+                        ResistenciaAntracnosis = AntracnosisVariedad.Tolerante,
+                        ResistenciaNematodos = NematodosVariedad.Resistente,
                         TiempoCosecha = "8 meses",
                         TiempoMaduracion = "6 meses",
                         RecomendacionNutricion = "Fertilización cada 4 meses",
@@ -40,14 +41,14 @@ namespace ColombianCoffeeApp
                         NombreComun = "Caturra",
                         NombreCientifico = "Coffea arabica var. Caturra",
                         Descripcion = "Variedad compacta con alta densidad de siembra.",
-                        Porte = "Bajo",
-                        TamanoGrano = "Mediano",
+                        Porte = PorteVariedad.Bajo,
+                        TamanoGrano = TamanoGranoVariedad.Mediano,
                         AltitudOptima = 1500,
-                        Rendimiento = "Medio",
-                        CalidadGrano = "Alta",
-                        ResistenciaRoya = "Baja",
-                        ResistenciaAntracnosis = "Media",
-                        ResistenciaNematodos = "Alta",
+                        Rendimiento = RendimientoVariedad.Medio,
+                        CalidadGrano = 5, // "Alta"
+                        ResistenciaRoya = RoyaVariedad.Tolerante,
+                        ResistenciaAntracnosis = AntracnosisVariedad.Resistente,
+                        ResistenciaNematodos = NematodosVariedad.Resistente,
                         TiempoCosecha = "9 meses",
                         TiempoMaduracion = "7 meses",
                         RecomendacionNutricion = "Fertilización cada 6 meses",

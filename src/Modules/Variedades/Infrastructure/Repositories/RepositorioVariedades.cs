@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using ColombianCoffeeApp.src.Shared.Context;
 using ColombianCoffeeApp.src.Modules.Variedades.Domain.Entities;
 
+
 namespace ColombianCoffeeApp.src.Modules.Variedades.Infrastructure.Repositories
 {
     public class RepositorioVariedades
@@ -26,11 +27,9 @@ namespace ColombianCoffeeApp.src.Modules.Variedades.Infrastructure.Repositories
             return _context.Variedades.ToList();
         }
 
-        public VariedadCafe ObtenerPorId(int id)
+        public VariedadCafe? ObtenerPorId(int id)
         {
-#pragma warning disable CS8603
             return _context.Variedades.FirstOrDefault(v => v.Id == id);
-#pragma warning restore CS8603
         }
 
         public void Actualizar(VariedadCafe variedad)
@@ -62,10 +61,10 @@ namespace ColombianCoffeeApp.src.Modules.Variedades.Infrastructure.Repositories
             var query = _context.Variedades.AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(porte))
-                query = query.Where(v => v.Porte != null && v.Porte.ToLower() == porte.ToLower());
+                query = query.Where(v => v.Porte.ToString().ToLower() == porte.ToLower());
 
             if (!string.IsNullOrWhiteSpace(tamanoGrano))
-                query = query.Where(v => v.TamanoGrano != null && v.TamanoGrano.ToLower() == tamanoGrano.ToLower());
+                query = query.Where(v => v.TamanoGrano.ToString().ToLower() == tamanoGrano.ToLower());
 
             if (altitudMin.HasValue)
                 query = query.Where(v => v.AltitudOptima >= altitudMin.Value);
@@ -74,10 +73,10 @@ namespace ColombianCoffeeApp.src.Modules.Variedades.Infrastructure.Repositories
                 query = query.Where(v => v.AltitudOptima <= altitudMax.Value);
 
             if (!string.IsNullOrWhiteSpace(rendimiento))
-                query = query.Where(v => v.Rendimiento != null && v.Rendimiento.ToLower() == rendimiento.ToLower());
+                query = query.Where(v => v.Rendimiento.ToString().ToLower() == rendimiento.ToLower());
 
             if (!string.IsNullOrWhiteSpace(calidad))
-                query = query.Where(v => v.CalidadGrano != null && v.CalidadGrano.ToLower() == calidad.ToLower());
+                query = query.Where(v => v.CalidadGrano.ToString().ToLower() == calidad.ToLower());
 
             if (!string.IsNullOrWhiteSpace(resistenciaValor))
             {
@@ -86,9 +85,9 @@ namespace ColombianCoffeeApp.src.Modules.Variedades.Infrastructure.Repositories
                 if (string.IsNullOrWhiteSpace(resistenciaTipo))
                 {
                     query = query.Where(v =>
-                        (v.ResistenciaRoya != null && v.ResistenciaRoya.ToLower() == val) ||
-                        (v.ResistenciaAntracnosis != null && v.ResistenciaAntracnosis.ToLower() == val) ||
-                        (v.ResistenciaNematodos != null && v.ResistenciaNematodos.ToLower() == val)
+                        v.ResistenciaRoya.ToString().ToLower() == val ||
+                        v.ResistenciaAntracnosis.ToString().ToLower() == val ||
+                        v.ResistenciaNematodos.ToString().ToLower() == val
                     );
                 }
                 else
@@ -96,19 +95,19 @@ namespace ColombianCoffeeApp.src.Modules.Variedades.Infrastructure.Repositories
                     switch (resistenciaTipo.Trim().ToLower())
                     {
                         case "roya":
-                            query = query.Where(v => v.ResistenciaRoya != null && v.ResistenciaRoya.ToLower() == val);
+                            query = query.Where(v => v.ResistenciaRoya.ToString().ToLower() == val);
                             break;
                         case "antracnosis":
-                            query = query.Where(v => v.ResistenciaAntracnosis != null && v.ResistenciaAntracnosis.ToLower() == val);
+                            query = query.Where(v => v.ResistenciaAntracnosis.ToString().ToLower() == val);
                             break;
                         case "nematodos":
-                            query = query.Where(v => v.ResistenciaNematodos != null && v.ResistenciaNematodos.ToLower() == val);
+                            query = query.Where(v => v.ResistenciaNematodos.ToString().ToLower() == val);
                             break;
                         default:
                             query = query.Where(v =>
-                                (v.ResistenciaRoya != null && v.ResistenciaRoya.ToLower() == val) ||
-                                (v.ResistenciaAntracnosis != null && v.ResistenciaAntracnosis.ToLower() == val) ||
-                                (v.ResistenciaNematodos != null && v.ResistenciaNematodos.ToLower() == val)
+                                v.ResistenciaRoya.ToString().ToLower() == val ||
+                                v.ResistenciaAntracnosis.ToString().ToLower() == val ||
+                                v.ResistenciaNematodos.ToString().ToLower() == val
                             );
                             break;
                     }

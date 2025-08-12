@@ -32,8 +32,12 @@ namespace ColombianCoffeeApp.src.Modules.Variedades.Application
 
         public VariedadCafe ObtenerPorId(int id)
         {
-            return _repositorio.ObtenerPorId(id);
+            var variedad = _repositorio.ObtenerPorId(id);
+            if (variedad == null)
+                throw new KeyNotFoundException($"No se encontró una variedad con el ID {id}");
+            return variedad;
         }
+
 
         public void ActualizarVariedad(VariedadCafe variedad)
         {

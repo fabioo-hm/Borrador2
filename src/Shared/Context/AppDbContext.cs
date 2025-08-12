@@ -11,10 +11,13 @@ namespace ColombianCoffeeApp.src.Shared.Context
     }
     public DbSet<Usuario> Usuarios => Set<Usuario>();
     public DbSet<VariedadCafe> Variedades => Set<VariedadCafe>();
-
+    
+    
     protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        modelBuilder.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);
+        {
+            modelBuilder.Entity<Usuario>().ToTable("usuario");
+            modelBuilder.Entity<VariedadCafe>().ToTable("variedad");
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);
         }
     }
 }

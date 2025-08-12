@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BorradoColombianCoffee.src.Modules.Usuarios.Domain;
 using ColombianCoffeeApp.src.Modules.Usuarios.Application;
 using ColombianCoffeeApp.src.Modules.Variedades.Application;
 using ColombianCoffeeApp.src.Modules.Variedades.Infrastructure.Repositories;
@@ -43,12 +44,13 @@ namespace ColombianCoffeeApp.src.Modules.Usuarios.UI
                 Console.ReadKey();
                 return;
             }
-            if (usuario.Rol == null || usuario.Rol.ToLower() != "admin")
+            if (usuario.Rol != RolUsuario.Administrador)
             {
                 Console.WriteLine("❌ Credenciales inválidas o no tiene permisos de administrador.");
                 Console.ReadKey();
                 return;
             }
+
 
             while (true)
             {

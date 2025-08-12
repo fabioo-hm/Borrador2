@@ -1,9 +1,8 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using ColombianCoffeeApp.src.Modules.Variedades.Domain.Entities;
 using ColombianCoffeeApp.src.Modules.Variedades.Application;
+using Borrador2.src.Modules.Variedades.Domain;
 
 namespace ColombianCoffeeApp.src.Modules.Variedades.UI
 {
@@ -72,15 +71,12 @@ namespace ColombianCoffeeApp.src.Modules.Variedades.UI
             Console.Write("Ruta imagen: ");
             variedad.RutaImagen = Console.ReadLine();
 
-            Console.Write("Porte (Alto/Bajo): ");
-            variedad.Porte = Console.ReadLine();
-
-            Console.Write("Tamaño grano (Pequeño/Medio/Grande): ");
-            variedad.TamanoGrano = Console.ReadLine();
+            // ---- Enums ----
+            variedad.Porte = LeerEnum<PorteVariedad>("Porte (Alto/Medio/Bajo)");
+            variedad.TamanoGrano = LeerEnum<TamanoGranoVariedad>("Tamaño grano (Pequeño/Medio/Grande)");
 
             Console.Write("Altitud óptima (número): ");
-            string? altitudInput = Console.ReadLine();
-            if (!int.TryParse(altitudInput, out int altitudOptima))
+            if (!int.TryParse(Console.ReadLine(), out int altitudOptima))
             {
                 Console.WriteLine("Valor inválido para altitud óptima. Presione una tecla...");
                 Console.ReadKey();
@@ -88,20 +84,20 @@ namespace ColombianCoffeeApp.src.Modules.Variedades.UI
             }
             variedad.AltitudOptima = altitudOptima;
 
-            Console.Write("Rendimiento: ");
-            variedad.Rendimiento = Console.ReadLine();
+            variedad.Rendimiento = LeerEnum<RendimientoVariedad>("Rendimiento (Bajo/Medio/Alto)");
 
-            Console.Write("Calidad del grano: ");
-            variedad.CalidadGrano = Console.ReadLine();
+            Console.Write("Calidad del grano (número): ");
+            if (!int.TryParse(Console.ReadLine(), out int calidadGrano))
+            {
+                Console.WriteLine("Valor inválido para calidad del grano. Presione una tecla...");
+                Console.ReadKey();
+                return;
+            }
+            variedad.CalidadGrano = calidadGrano;
 
-            Console.Write("Resistencia Roya: ");
-            variedad.ResistenciaRoya = Console.ReadLine();
-
-            Console.Write("Resistencia Antracnosis: ");
-            variedad.ResistenciaAntracnosis = Console.ReadLine();
-
-            Console.Write("Resistencia Nematodos: ");
-            variedad.ResistenciaNematodos = Console.ReadLine();
+            variedad.ResistenciaRoya = LeerEnum<RoyaVariedad>("Resistencia Roya (Baja/Media/Alta)");
+            variedad.ResistenciaAntracnosis = LeerEnum<AntracnosisVariedad>("Resistencia Antracnosis (Baja/Media/Alta)");
+            variedad.ResistenciaNematodos = LeerEnum<NematodosVariedad>("Resistencia Nematodos (Baja/Media/Alta)");
 
             Console.Write("Tiempo de cosecha: ");
             variedad.TiempoCosecha = Console.ReadLine();
@@ -206,6 +202,20 @@ namespace ColombianCoffeeApp.src.Modules.Variedades.UI
 
             Console.WriteLine("\nPresione una tecla para continuar...");
             Console.ReadKey();
+        }
+
+        // Método genérico para leer y validar enums
+        private T LeerEnum<T>(string mensaje) where T : struct
+        {
+            while (true)
+            {
+                Console.Write($"{mensaje}: ");
+                var input = Console.ReadLine();
+                if (Enum.TryParse<T>(input, true, out var valor))
+                    return valor;
+
+                Console.WriteLine("❌ Valor inválido. Intente de nuevo.");
+            }
         }
     }
 }

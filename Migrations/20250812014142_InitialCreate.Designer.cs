@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ColombianCoffeeApp.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250810034046_InitialCreate")]
+    [Migration("20250812014142_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -19,7 +19,7 @@ namespace ColombianCoffeeApp.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.13")
+                .HasAnnotation("ProductVersion", "9.0.8")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
@@ -33,17 +33,23 @@ namespace ColombianCoffeeApp.Migrations
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Contrasena")
-                        .HasColumnType("longtext");
+                        .IsRequired()
+                        .HasMaxLength(8)
+                        .HasColumnType("varchar(8)");
 
                     b.Property<string>("NombreUsuario")
-                        .HasColumnType("longtext");
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)");
 
                     b.Property<string>("Rol")
-                        .HasColumnType("longtext");
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("varchar(20)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Usuarios");
+                    b.ToTable("usuario", (string)null);
                 });
 
             modelBuilder.Entity("ColombianCoffeeApp.src.Modules.Variedades.Domain.Entities.VariedadCafe", b =>
@@ -57,8 +63,8 @@ namespace ColombianCoffeeApp.Migrations
                     b.Property<int>("AltitudOptima")
                         .HasColumnType("int");
 
-                    b.Property<string>("CalidadGrano")
-                        .HasColumnType("longtext");
+                    b.Property<int>("CalidadGrano")
+                        .HasColumnType("int");
 
                     b.Property<string>("DensidadSiembra")
                         .HasColumnType("longtext");
@@ -84,29 +90,29 @@ namespace ColombianCoffeeApp.Migrations
                     b.Property<string>("Obtentor")
                         .HasColumnType("longtext");
 
-                    b.Property<string>("Porte")
-                        .HasColumnType("longtext");
+                    b.Property<int>("Porte")
+                        .HasColumnType("int");
 
                     b.Property<string>("RecomendacionNutricion")
                         .HasColumnType("longtext");
 
-                    b.Property<string>("Rendimiento")
-                        .HasColumnType("longtext");
+                    b.Property<int>("Rendimiento")
+                        .HasColumnType("int");
 
-                    b.Property<string>("ResistenciaAntracnosis")
-                        .HasColumnType("longtext");
+                    b.Property<int>("ResistenciaAntracnosis")
+                        .HasColumnType("int");
 
-                    b.Property<string>("ResistenciaNematodos")
-                        .HasColumnType("longtext");
+                    b.Property<int>("ResistenciaNematodos")
+                        .HasColumnType("int");
 
-                    b.Property<string>("ResistenciaRoya")
-                        .HasColumnType("longtext");
+                    b.Property<int>("ResistenciaRoya")
+                        .HasColumnType("int");
 
                     b.Property<string>("RutaImagen")
                         .HasColumnType("longtext");
 
-                    b.Property<string>("TamanoGrano")
-                        .HasColumnType("longtext");
+                    b.Property<int>("TamanoGrano")
+                        .HasColumnType("int");
 
                     b.Property<string>("TiempoCosecha")
                         .HasColumnType("longtext");
@@ -116,7 +122,7 @@ namespace ColombianCoffeeApp.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Variedades");
+                    b.ToTable("variedad", (string)null);
                 });
 #pragma warning restore 612, 618
         }

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BorradoColombianCoffee.src.Modules.Usuarios.Domain;
 using ColombianCoffeeApp.src.Modules.Usuarios.Domain.Entities;
 using ColombianCoffeeApp.src.Modules.Usuarios.Infrastructure.Repositories;
 
@@ -27,7 +28,7 @@ namespace ColombianCoffeeApp.src.Modules.Usuarios.Application
             {
                 NombreUsuario = nombreUsuario,
                 Contrasena = contrasena,
-                Rol = "admin"
+                Rol = RolUsuario.Administrador 
             };
             _repo.Crear(admin);
         }
