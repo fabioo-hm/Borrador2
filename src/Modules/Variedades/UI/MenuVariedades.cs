@@ -125,9 +125,9 @@ namespace ColombianCoffeeApp.src.Modules.Variedades.UI
             }
             variedad.CalidadGrano = calidadGrano;
 
-            variedad.ResistenciaRoya = LeerEnum<RoyaVariedad>("Resistencia Roya (Baja/Media/Alta)");
-            variedad.ResistenciaAntracnosis = LeerEnum<AntracnosisVariedad>("Resistencia Antracnosis (Baja/Media/Alta)");
-            variedad.ResistenciaNematodos = LeerEnum<NematodosVariedad>("Resistencia Nematodos (Baja/Media/Alta)");
+            variedad.ResistenciaRoya = LeerEnum<RoyaVariedad>("Resistencia Roya (Susceptible/Tolerante/Resistente)");
+            variedad.ResistenciaAntracnosis = LeerEnum<AntracnosisVariedad>("Resistencia Antracnosis (Susceptible/Tolerante/Resistente)");
+            variedad.ResistenciaNematodos = LeerEnum<NematodosVariedad>("Resistencia Nematodos (Susceptible/Tolerante/Resistente)");
 
             Console.Write("Tiempo de cosecha: ");
             variedad.TiempoCosecha = Console.ReadLine();
