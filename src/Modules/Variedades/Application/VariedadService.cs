@@ -81,6 +81,31 @@ namespace ColombianCoffeeApp.src.Modules.Variedades.Application
             }
         }
 
+        public IEnumerable<VariedadCafe> FiltrarPorAtributos(List<(string atributo, string valor)> filtros)
+        {
+            var lista = _repositorio.ObtenerTodas();
+
+            foreach (var (atributo, valor) in filtros)
+            {
+                var prop = typeof(VariedadCafe).GetProperty(atributo);
+                if (prop == null)
+                    throw new ArgumentException($"El atributo '{atributo}' no existe.");
+
+                lista = lista
+                    .Where(v => 
+                        {
+                            var propValue = prop.GetValue(v);
+                            return propValue?.ToString()?.Equals(valor, StringComparison.OrdinalIgnoreCase) == true;
+                        }
+                    )
+                    .ToList();
+            }
+
+            return lista;
+        }
+
+
+
         public List<VariedadCafe> Sugerencias(string porte, string resistenciaRoya)
         {
             return _repositorio.FiltrarVariedades(

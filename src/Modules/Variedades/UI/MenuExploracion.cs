@@ -101,42 +101,56 @@ namespace ColombianCoffeeApp.src.Modules.Variedades.UI
 
         private void FiltrarPorAtributo()
         {
-            Console.Write("\nIngrese el nombre del atributo (ej: Porte, TamanoGrano): ");
-            string? atributo = Console.ReadLine();
-            Console.Write("Ingrese el valor a buscar: ");
-            string? valor = Console.ReadLine();
+            var filtros = new List<(string atributo, string valor)>();
 
-            if (string.IsNullOrWhiteSpace(atributo) || string.IsNullOrWhiteSpace(valor))
+            bool agregarOtro = true;
+            while (agregarOtro)
             {
-                Console.WriteLine("El atributo y el valor no pueden estar vacíos.");
+                Console.Write("\nIngrese el nombre del atributo (ej: Porte, TamanoGrano): ");
+                string? atributo = Console.ReadLine();
+                Console.Write("Ingrese el valor a buscar: ");
+                string? valor = Console.ReadLine();
+
+                if (string.IsNullOrWhiteSpace(atributo) || string.IsNullOrWhiteSpace(valor))
+                {
+                    Console.WriteLine("⚠️ El atributo y el valor no pueden estar vacíos.");
+                }
+                else
+                {
+                    filtros.Add((atributo, valor));
+                }
+
+                Console.Write("¿Desea agregar otro filtro? (s/n): ");
+                string respuesta = Console.ReadLine()?.Trim().ToLower() ?? "";
+                agregarOtro = (respuesta == "s");
             }
-            else
-            {
-                try
-                {
-                    var resultados = _service.FiltrarPorAtributo(atributo, valor);
 
-                    if (!resultados.Any())
-                    {
-                        Console.WriteLine("No se encontraron variedades con ese criterio.");
-                    }
-                    else
-                    {
-                        foreach (var v in resultados)
-                        {
-                            Console.WriteLine($"{v.Id} - {v.NombreComun} ({v.NombreCientifico})");
-                        }
-                    }
-                }
-                catch (ArgumentException ex)
+            try
+            {
+                var resultados = _service.FiltrarPorAtributos(filtros);
+
+                if (!resultados.Any())
                 {
-                    Console.WriteLine($"Error: {ex.Message}");
+                    Console.WriteLine("❌ No se encontraron variedades con esos criterios.");
                 }
+                else
+                {
+                    Console.WriteLine("\n📋 Resultados:");
+                    foreach (var v in resultados)
+                    {
+                        Console.WriteLine($"{v.Id} - {v.NombreComun} ({v.NombreCientifico})");
+                    }
+                }
+            }
+            catch (ArgumentException ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
             }
 
             Console.WriteLine("\nPresione una tecla para continuar...");
             Console.ReadKey();
         }
+
 
         private void MostrarFichaTecnica(VariedadCafe v)
         {

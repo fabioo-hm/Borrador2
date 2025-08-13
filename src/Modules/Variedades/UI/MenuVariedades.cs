@@ -1,62 +1,87 @@
-using System;
-using System.Linq;
-using ColombianCoffeeApp.src.Modules.Variedades.Domain.Entities;
-using ColombianCoffeeApp.src.Modules.Variedades.Application;
 using Borrador2.src.Modules.Variedades.Domain;
+using ColombianCoffeeApp.src.Modules.Variedades.Application;
+using ColombianCoffeeApp.src.Modules.Variedades.Domain.Entities;
+using ColombianCoffeeApp.src.Modules.Variedades.Infrastructure.Repositories;
+using ColombianCoffeeApp.src.Shared.Context;
+using Shared.Helpers;
 
 namespace ColombianCoffeeApp.src.Modules.Variedades.UI
 {
-    public class MenuAdminVariedad
+    public class MenuVariedades
     {
         private readonly VariedadService _service;
 
-        public MenuAdminVariedad(VariedadService service)
+        public MenuVariedades()
         {
-            _service = service;
+            var db = DbContextFactory.Create();
+            var repo = new RepositorioVariedades(db);
+            _service = new VariedadService(repo);
         }
 
         public void Mostrar()
         {
-            while (true)
+            bool salir = false;
+            while (!salir)
             {
                 Console.Clear();
                 Console.Write("""
                     ╔════════════════════════════════════════════╗
-                    ║     🔐 ADMINISTRACIÓN DE VARIEDADES 🔐     ║
+                    ║         📋 GESTIÓN DE VARIEDADES 📋       ║
                     ╚════════════════════════════════════════════╝
-                    ║ 1.- Crear Nueva Variedad                   ║
-                    ║ 2.- Editar Variedad                        ║
-                    ║ 3.- Eliminar Variedad                      ║
-                    ║ 4.- Listar Variedadades                    ║
-                    ║ 5.- Regresar ↩                             ║
+                    ║ 1.- Listar Todas las Variedades            ║
+                    ║ 2.- Añadir Nueva Variedad                  ║
+                    ║ 3.- Editar Variedad Existente              ║
+                    ║ 4.- Eliminar Variedad                      ║
+                    ║ 5.- Regresar al 'Menú Anterior' ↩          ║
                     ╚════════════════════════════════════════════╝
                     Seleccione la opción: 
-                    """
-                    );
-                var opcion = Console.ReadLine();
+                """
+                );
+                string opcion = Console.ReadLine() ?? string.Empty;
 
                 switch (opcion)
                 {
                     case "1":
-                        CrearVariedad();
-                        break;
-                    case "2":
-                        EditarVariedad();
-                        break;
-                    case "3":
-                        EliminarVariedad();
-                        break;
-                    case "4":
                         ListarVariedades();
                         break;
+                    case "2":
+                        CrearVariedad();
+                        break;
+                    case "3":
+                        EditarVariedad();
+                        break;
+                    case "4":
+                        EliminarVariedad();
+                        break;
                     case "5":
-                        return;
+                        salir = true;
+                        break;
                     default:
-                        Console.WriteLine("Opción inválida. Presione una tecla...");
+                        Console.WriteLine("❌ Opción inválida.");
                         Console.ReadKey();
                         break;
                 }
             }
+        }
+
+        private void ListarVariedades()
+        {
+            Console.Clear();
+            var variedades = _service.ObtenerTodas();
+            Console.WriteLine("\n📋 LISTA DE VARIEDADES:");
+            if (!variedades.Any())
+            {
+                Console.WriteLine("No hay variedades registradas.");
+            }
+            else
+            {
+                foreach (var v in variedades)
+                {
+                    Console.WriteLine($"ID: {v.Id} | {v.NombreComun} - {v.NombreCientifico}");
+                }
+            }
+            Console.WriteLine("\nPresione una tecla para continuar...");
+            Console.ReadKey();
         }
 
         private void CrearVariedad()
@@ -77,7 +102,6 @@ namespace ColombianCoffeeApp.src.Modules.Variedades.UI
             Console.Write("Ruta imagen: ");
             variedad.RutaImagen = Console.ReadLine();
 
-            // ---- Enums ----
             variedad.Porte = LeerEnum<PorteVariedad>("Porte (Alto/Medio/Bajo)");
             variedad.TamanoGrano = LeerEnum<TamanoGranoVariedad>("Tamaño grano (Pequeño/Medio/Grande)");
 
@@ -188,30 +212,8 @@ namespace ColombianCoffeeApp.src.Modules.Variedades.UI
             Console.WriteLine("✅ Variedad eliminada con éxito.");
             Console.ReadKey();
         }
-
-        private void ListarVariedades()
-        {
-            Console.Clear();
-            var variedades = _service.ObtenerTodas();
-
-            if (!variedades.Any())
-            {
-                Console.WriteLine("No hay variedades registradas.");
-            }
-            else
-            {
-                foreach (var v in variedades)
-                {
-                    Console.WriteLine($"{v.Id} - {v.NombreComun} ({v.NombreCientifico})");
-                }
-            }
-
-            Console.WriteLine("\nPresione una tecla para continuar...");
-            Console.ReadKey();
-        }
-
-        // Método genérico para leer y validar enums
-        private T LeerEnum<T>(string mensaje) where T : struct
+        
+         private T LeerEnum<T>(string mensaje) where T : struct
         {
             while (true)
             {
