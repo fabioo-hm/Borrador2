@@ -2,14 +2,15 @@ using System;
 using System.Collections.Generic;
 using ColombianCoffeeApp.src.Modules.Variedades.Domain.Entities;
 using ColombianCoffeeApp.src.Modules.Variedades.Infrastructure.Repositories;
+using ColombianCoffeeApp.src.Modules.Variedades.Application.Interfaces;
 
 namespace ColombianCoffeeApp.src.Modules.Variedades.Application
 {
-    public class VariedadService
+    public class VariedadService : IVariedadService
     {
-        private readonly RepositorioVariedades _repositorio;
+        private readonly IVariedadRepository _repositorio;
 
-        public VariedadService(RepositorioVariedades repositorio)
+        public VariedadService(IVariedadRepository repositorio)
         {
             _repositorio = repositorio;
         }
@@ -37,7 +38,6 @@ namespace ColombianCoffeeApp.src.Modules.Variedades.Application
                 throw new KeyNotFoundException($"No se encontró una variedad con el ID {id}");
             return variedad;
         }
-
 
         public void ActualizarVariedad(VariedadCafe variedad)
         {
@@ -103,8 +103,6 @@ namespace ColombianCoffeeApp.src.Modules.Variedades.Application
 
             return lista;
         }
-
-
 
         public List<VariedadCafe> Sugerencias(string porte, string resistenciaRoya)
         {

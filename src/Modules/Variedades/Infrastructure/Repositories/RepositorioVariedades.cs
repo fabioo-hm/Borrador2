@@ -3,11 +3,11 @@ using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using ColombianCoffeeApp.src.Shared.Context;
 using ColombianCoffeeApp.src.Modules.Variedades.Domain.Entities;
-
+using ColombianCoffeeApp.src.Modules.Variedades.Application.Interfaces;
 
 namespace ColombianCoffeeApp.src.Modules.Variedades.Infrastructure.Repositories
 {
-    public class RepositorioVariedades
+    public class RepositorioVariedades : IVariedadRepository
     {
         private readonly AppDbContext _context;
 

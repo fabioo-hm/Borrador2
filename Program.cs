@@ -12,7 +12,7 @@ using ColombianCoffeeApp;
 
 internal class Program
 {
-    private static void Main(string[] args)
+    private static async Task Main(string[] args)
     {
         using var db = DbContextFactory.Create();
         var repoUsuarios = new RepositorioUsuarios(db);
@@ -45,7 +45,7 @@ internal class Program
                 Console.Write("Contraseña: ");
                 string contrasena = Console.ReadLine() ?? "";
 
-                var usuario = serviceUsuarios.Login(nombreUsuario, contrasena);
+                var usuario = await serviceUsuarios.LoginAsync(nombreUsuario, contrasena);
                 if (usuario == null)
                 {
                     Console.WriteLine("❌ Usuario o contraseña incorrectos.");
@@ -53,7 +53,6 @@ internal class Program
                 }
                 else
                 {
-                    // Ir al menú según el rol
                     MostrarMenuPorRol(usuario.Rol);
                 }
             }
@@ -66,8 +65,8 @@ internal class Program
                 Console.Write("Rol (Administrador/Usuario): ");
                 string rol = Console.ReadLine() ?? "";
 
-                serviceUsuarios.CrearUsuario(nombreUsuario, contrasena, rol);
-                Console.WriteLine("✅ Usuario creado. Inicie sesión para continuar.");
+                await serviceUsuarios.CrearUsuarioAsync(nombreUsuario, contrasena, rol);
+                Console.Write("✅ Usuario creado.\nInicie sesión para continuar...");
                 Console.ReadKey();
             }
             else if (opcion == "3")
@@ -91,7 +90,7 @@ internal class Program
             MenuUsuario();
     }
 
-    private static void MenuAdmin()
+    private static async void MenuAdmin()
     {
         bool salir = false;
         while (!salir)
@@ -116,7 +115,7 @@ internal class Program
                     new MenuVariedades().Mostrar();
                     break;
                 case "2":
-                    new MenuUsuarios().Mostrar();
+                    await new MenuUsuarios().Mostrar();
                     break;
                 case "3":
                     using (var db = DbContextFactory.Create())

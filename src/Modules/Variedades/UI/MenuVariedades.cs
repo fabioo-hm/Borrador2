@@ -80,7 +80,7 @@ namespace ColombianCoffeeApp.src.Modules.Variedades.UI
                     Console.WriteLine($"ID: {v.Id} | {v.NombreComun} - {v.NombreCientifico}");
                 }
             }
-            Console.WriteLine("\nPresione una tecla para continuar...");
+            Console.Write("\nPresione una tecla para continuar...");
             Console.ReadKey();
         }
 
@@ -108,7 +108,7 @@ namespace ColombianCoffeeApp.src.Modules.Variedades.UI
             Console.Write("Altitud óptima (número): ");
             if (!int.TryParse(Console.ReadLine(), out int altitudOptima))
             {
-                Console.WriteLine("Valor inválido para altitud óptima. Presione una tecla...");
+                Console.Write("⚠️ Valor inválido para altitud óptima. Presione una tecla...");
                 Console.ReadKey();
                 return;
             }
@@ -119,7 +119,7 @@ namespace ColombianCoffeeApp.src.Modules.Variedades.UI
             Console.Write("Calidad del grano (número): ");
             if (!int.TryParse(Console.ReadLine(), out int calidadGrano))
             {
-                Console.WriteLine("Valor inválido para calidad del grano. Presione una tecla...");
+                Console.Write("⚠️ Valor inválido para calidad del grano. Presione una tecla...");
                 Console.ReadKey();
                 return;
             }
@@ -154,7 +154,7 @@ namespace ColombianCoffeeApp.src.Modules.Variedades.UI
             variedad.Familia = Console.ReadLine();
 
             _service.CrearVariedad(variedad);
-            Console.WriteLine("✅ Variedad creada con éxito. Presione una tecla...");
+            Console.Write("\n✅ Variedad creada con éxito. Presione una tecla...");
             Console.ReadKey();
         }
 
@@ -165,7 +165,7 @@ namespace ColombianCoffeeApp.src.Modules.Variedades.UI
             Console.Write("Ingrese el ID de la variedad a editar: ");
             if (!int.TryParse(Console.ReadLine(), out int id))
             {
-                Console.WriteLine("ID inválido.");
+                Console.WriteLine("❌ ID inválido.");
                 Console.ReadKey();
                 return;
             }
@@ -173,7 +173,7 @@ namespace ColombianCoffeeApp.src.Modules.Variedades.UI
             var variedad = _service.ObtenerPorId(id);
             if (variedad == null)
             {
-                Console.WriteLine("No se encontró la variedad.");
+                Console.WriteLine("⚠️ No se encontró la variedad.");
                 Console.ReadKey();
                 return;
             }
@@ -203,7 +203,7 @@ namespace ColombianCoffeeApp.src.Modules.Variedades.UI
             Console.Write("Ingrese el ID de la variedad a eliminar: ");
             if (!int.TryParse(Console.ReadLine(), out int id))
             {
-                Console.WriteLine("ID inválido.");
+                Console.WriteLine("❌ ID inválido.");
                 Console.ReadKey();
                 return;
             }
@@ -213,7 +213,7 @@ namespace ColombianCoffeeApp.src.Modules.Variedades.UI
             Console.ReadKey();
         }
         
-         private T LeerEnum<T>(string mensaje) where T : struct
+        private T LeerEnum<T>(string mensaje) where T : struct
         {
             while (true)
             {

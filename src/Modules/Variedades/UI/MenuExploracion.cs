@@ -31,7 +31,7 @@ namespace ColombianCoffeeApp.src.Modules.Variedades.UI
                 ╚════════════════════════════════════════════╝
                 Seleccione la opción: 
                 """
-                 );
+                );
                 var opcion = Console.ReadLine();
 
                 switch (opcion)
@@ -48,7 +48,7 @@ namespace ColombianCoffeeApp.src.Modules.Variedades.UI
                     case "4":
                         return;
                     default:
-                        Console.WriteLine("Opción inválida. Presione una tecla...");
+                        Console.Write("❌ Opción inválida. Presione una tecla...");
                         Console.ReadKey();
                         break;
                 }
@@ -72,7 +72,7 @@ namespace ColombianCoffeeApp.src.Modules.Variedades.UI
                 }
             }
 
-            Console.WriteLine("\nPresione una tecla para continuar...");
+            Console.Write("\nPresione una tecla para continuar...");
             Console.ReadKey();
         }
 
@@ -88,14 +88,14 @@ namespace ColombianCoffeeApp.src.Modules.Variedades.UI
                 }
                 else
                 {
-                    Console.WriteLine("No se encontró la variedad.");
+                    Console.WriteLine("⚠️ No se encontró la variedad.");
                 }
             }
             else
             {
-                Console.WriteLine("ID inválido.");
+                Console.WriteLine("❌ ID inválido.");
             }
-            Console.WriteLine("\nPresione una tecla para continuar...");
+            Console.Write("\nPresione una tecla para continuar...");
             Console.ReadKey();
         }
 
@@ -147,7 +147,7 @@ namespace ColombianCoffeeApp.src.Modules.Variedades.UI
                 Console.WriteLine($"Error: {ex.Message}");
             }
 
-            Console.WriteLine("\nPresione una tecla para continuar...");
+            Console.Write("\nPresione una tecla para continuar...");
             Console.ReadKey();
         }
 

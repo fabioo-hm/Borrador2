@@ -1,13 +1,15 @@
 using System;
 using ColombianCoffeeApp.src.Modules.Usuarios.Application;
+using ColombianCoffeeApp.src.Modules.Usuarios.Application.Interfaces;
 using ColombianCoffeeApp.src.Modules.Usuarios.Infrastructure.Repositories;
+
 using Shared.Helpers;
 
 namespace ColombianCoffeeApp.src.Modules.Usuarios.UI
 {
     public class MenuUsuarios
     {
-        private readonly UsuarioService _service;
+        private readonly IUsuarioService _service;
 
         public MenuUsuarios()
         {
@@ -16,7 +18,7 @@ namespace ColombianCoffeeApp.src.Modules.Usuarios.UI
             _service = new UsuarioService(repo);
         }
 
-        public void Mostrar()
+        public async Task Mostrar()
         {
             bool salir = false;
             while (!salir)
@@ -24,7 +26,7 @@ namespace ColombianCoffeeApp.src.Modules.Usuarios.UI
                 Console.Clear();
                 Console.Write("""
                 ╔════════════════════════════════════════════╗
-                ║      🙍 Gestión de Usuarios (CRUD) 📋     ║
+                ║      🙍 Gestión de Usuarios (CRUD) 📋      ║
                 ╚════════════════════════════════════════════╝
                 ║ 1.- Listar TODOS los Usuarios              ║
                 ║ 2.- Crear Nuevo Usuario                    ║
@@ -32,20 +34,19 @@ namespace ColombianCoffeeApp.src.Modules.Usuarios.UI
                 ║ 4.- Regresar al 'Menú Anterior' ↩          ║
                 ╚════════════════════════════════════════════╝
                 Seleccione la opción: 
-                """
-                );
+                """);
                 string opcion = Console.ReadLine() ?? string.Empty;
 
                 switch (opcion)
                 {
                     case "1":
-                        Listar();
+                        await Listar();
                         break;
                     case "2":
-                        Crear();
+                        await Crear();
                         break;
                     case "3":
-                        Eliminar();
+                        await Eliminar();
                         break;
                     case "4":
                         salir = true;
@@ -58,12 +59,13 @@ namespace ColombianCoffeeApp.src.Modules.Usuarios.UI
             }
         }
 
-        private void Listar()
+        private async Task Listar()
         {
             Console.Clear();
-            var usuarios = _service.ObtenerTodos();
+            var usuarios = await _service.ObtenerTodosAsync();
+
             Console.WriteLine("\n📋 LISTA DE USUARIOS:");
-            if (usuarios.Count == 0)
+            if (!usuarios.Any())
             {
                 Console.WriteLine("No hay usuarios registrados.");
             }
@@ -74,11 +76,11 @@ namespace ColombianCoffeeApp.src.Modules.Usuarios.UI
                     Console.WriteLine($"ID: {u.Id} | Usuario: {u.NombreUsuario} | Rol: {u.Rol}");
                 }
             }
-            Console.WriteLine("\nPresione una tecla para continuar...");
+            Console.Write("\nPresione una tecla para continuar...");
             Console.ReadKey();
         }
 
-        private void Crear()
+        private async Task Crear()
         {
             Console.Clear();
             Console.WriteLine("➕ CREAR NUEVO USUARIO");
@@ -100,7 +102,7 @@ namespace ColombianCoffeeApp.src.Modules.Usuarios.UI
             {
                 try
                 {
-                    _service.CrearUsuario(nombre, contrasena, rol);
+                    await _service.CrearUsuarioAsync(nombre, contrasena, rol);
                     Console.WriteLine("✅ Usuario creado.");
                 }
                 catch (Exception ex)
@@ -109,24 +111,24 @@ namespace ColombianCoffeeApp.src.Modules.Usuarios.UI
                 }
             }
 
-            Console.WriteLine("Presione una tecla para continuar...");
+            Console.Write("\nPresione una tecla para continuar...");
             Console.ReadKey();
         }
 
-        private void Eliminar()
+        private async Task Eliminar()
         {
             Console.Clear();
             Console.Write("Ingrese el ID del usuario a eliminar: ");
             if (int.TryParse(Console.ReadLine(), out int id))
             {
-                var ok = _service.Eliminar(id);
+                var ok = await _service.EliminarAsync(id);
                 Console.WriteLine(ok ? "✅ Usuario eliminado." : "❌ No se encontró el usuario.");
             }
             else
             {
                 Console.WriteLine("❌ ID inválido.");
             }
-            Console.WriteLine("Presione una tecla para continuar...");
+            Console.Write("\nPresione una tecla para continuar...");
             Console.ReadKey();
         }
     }
