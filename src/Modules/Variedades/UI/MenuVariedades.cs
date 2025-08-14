@@ -25,16 +25,16 @@ namespace ColombianCoffeeApp.src.Modules.Variedades.UI
             {
                 Console.Clear();
                 Console.Write("""
-                    ╔════════════════════════════════════════════╗
-                    ║         📋 GESTIÓN DE VARIEDADES 📋       ║
-                    ╚════════════════════════════════════════════╝
-                    ║ 1.- Listar Todas las Variedades            ║
-                    ║ 2.- Añadir Nueva Variedad                  ║
-                    ║ 3.- Editar Variedad Existente              ║
-                    ║ 4.- Eliminar Variedad                      ║
-                    ║ 5.- Regresar al 'Menú Anterior' ↩          ║
-                    ╚════════════════════════════════════════════╝
-                    Seleccione la opción: 
+                ╔════════════════════════════════════════════╗
+                ║         📋 GESTIÓN DE VARIEDADES 📋       ║
+                ╚════════════════════════════════════════════╝
+                ║ 1.- Listar Todas las Variedades            ║
+                ║ 2.- Añadir Nueva Variedad                  ║
+                ║ 3.- Editar Variedad Existente              ║
+                ║ 4.- Eliminar Variedad                      ║
+                ║ 5.- Regresar al 'Menú Anterior' ↩          ║
+                ╚════════════════════════════════════════════╝
+                Seleccione la opción: 
                 """
                 );
                 string opcion = Console.ReadLine() ?? string.Empty;

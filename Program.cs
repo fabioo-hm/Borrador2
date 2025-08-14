@@ -1,4 +1,4 @@
-﻿﻿using ColombianCoffeeApp.src.Modules.Usuarios.Application;
+﻿using ColombianCoffeeApp.src.Modules.Usuarios.Application;
 using ColombianCoffeeApp.src.Modules.Usuarios.Infrastructure.Repositories;
 using ColombianCoffeeApp.src.Modules.Variedades.UI;
 using ColombianCoffeeApp.src.Modules.Usuarios.UI;
@@ -7,6 +7,7 @@ using Shared.Helpers;
 using BorradoColombianCoffee.src.Modules.Usuarios.Domain;
 using ColombianCoffeeApp.Services;
 using System.Linq;
+using ColombianCoffeeApp;
 
 
 internal class Program
@@ -15,6 +16,7 @@ internal class Program
     {
         using var db = DbContextFactory.Create();
         var repoUsuarios = new RepositorioUsuarios(db);
+        DataSeeder.Seed(db);
         var serviceUsuarios = new UsuarioService(repoUsuarios);
 
         bool salirPrograma = false;
@@ -96,15 +98,15 @@ internal class Program
         {
             Console.Clear();
             Console.Write("""
-                ╔════════════════════════════════════════╗
-                ║        🔧 MENÚ ADMINISTRADOR 🔧        ║
-                ╚════════════════════════════════════════╝
-                ║ 1.- CRUD Variedades                    ║
-                ║ 2.- CRUD Usuarios                      ║
-                ║ 3.- Generar catálogo PDF               ║
-                ║ 4.- Cerrar Sesión                      ║
-                ╚════════════════════════════════════════╝
-                Seleccione la opción: 
+            ╔════════════════════════════════════════╗
+            ║        🔧 MENÚ ADMINISTRADOR 🔧        ║
+            ╚════════════════════════════════════════╝
+            ║ 1.- CRUD Variedades                    ║
+            ║ 2.- CRUD Usuarios                      ║
+            ║ 3.- Generar catálogo PDF               ║
+            ║ 4.- Cerrar Sesión                      ║
+            ╚════════════════════════════════════════╝
+            Seleccione la opción: 
             """);
             string opcion = Console.ReadLine() ?? "";
 
@@ -143,14 +145,14 @@ internal class Program
         {
             Console.Clear();
             Console.Write("""
-                ╔══════════════════════════════════════╗
-                ║          👤 MENÚ USUARIO 👤          ║
-                ╚══════════════════════════════════════╝
-                ║ 1.- Explorar Variedades              ║
-                ║ 2.- Generar catálogo PDF             ║
-                ║ 3.- Cerrar Sesión                    ║
-                ╚══════════════════════════════════════╝
-                Seleccione la opción: 
+            ╔══════════════════════════════════════╗
+            ║          👤 MENÚ USUARIO 👤          ║
+            ╚══════════════════════════════════════╝
+            ║ 1.- Explorar Variedades              ║
+            ║ 2.- Generar catálogo PDF             ║
+            ║ 3.- Cerrar Sesión                    ║
+            ╚══════════════════════════════════════╝
+            Seleccione la opción: 
             """);
             string opcion = Console.ReadLine() ?? "";
 

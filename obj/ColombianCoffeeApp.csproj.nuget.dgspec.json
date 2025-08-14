@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/home/camper/Borrador2/ColombianCoffeeApp.csproj": {}
+    "C:\\Users\\Maria Cristina\\Borrador2\\ColombianCoffeeApp.csproj": {}
   },
   "projects": {
-    "/home/camper/Borrador2/ColombianCoffeeApp.csproj": {
+    "C:\\Users\\Maria Cristina\\Borrador2\\ColombianCoffeeApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/camper/Borrador2/ColombianCoffeeApp.csproj",
+        "projectUniqueName": "C:\\Users\\Maria Cristina\\Borrador2\\ColombianCoffeeApp.csproj",
         "projectName": "ColombianCoffeeApp",
-        "projectPath": "/home/camper/Borrador2/ColombianCoffeeApp.csproj",
-        "packagesPath": "/home/camper/.nuget/packages/",
-        "outputPath": "/home/camper/Borrador2/obj/",
+        "projectPath": "C:\\Users\\Maria Cristina\\Borrador2\\ColombianCoffeeApp.csproj",
+        "packagesPath": "C:\\Users\\Maria Cristina\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Maria Cristina\\Borrador2\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/camper/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\Maria Cristina\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
@@ -38,7 +38,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.200"
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net9.0": {
@@ -84,7 +84,7 @@
             },
             "iTextSharp": {
               "target": "Package",
-              "version": "[5.5.13.3, )"
+              "version": "[5.5.13.4, )"
             },
             "itext7": {
               "target": "Package",
@@ -111,7 +111,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/9.0.203/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

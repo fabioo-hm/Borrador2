@@ -18,6 +18,7 @@ namespace ColombianCoffeeApp.Services
 {
     public class PdfService
     {
+        Color grisClaro = new DeviceRgb(230, 230, 230);
         public void GenerarCatalogo(List<VariedadCafe> variedades, string rutaArchivo)
         {
             if (variedades == null || variedades.Count == 0)
@@ -82,7 +83,7 @@ namespace ColombianCoffeeApp.Services
                     .SetFontSize(14)
                     .SetTextAlignment(TextAlignment.CENTER)
                     .SetMarginTop(40));
-                
+
                 document.Add(new Paragraph("Camilo Andrés Suárez Niño\nFabio Andrés Hernández Manrrique\nJuan Sebastián Mora Patiño\nSimón Rubiano Ortiz")
                     .SetFontSize(14)
                     .SetTextAlignment(TextAlignment.CENTER)
@@ -93,7 +94,7 @@ namespace ColombianCoffeeApp.Services
                     .SetFontSize(14)
                     .SetTextAlignment(TextAlignment.CENTER)
                     .SetMarginTop(40));
-                
+
                 document.Add(new Paragraph("Johlver Pardo")
                     .SetFontSize(14)
                     .SetTextAlignment(TextAlignment.CENTER)
@@ -107,6 +108,7 @@ namespace ColombianCoffeeApp.Services
                     document.Add(new Paragraph($"{variedad.NombreComun} ({variedad.NombreCientifico})")
                         .SetFont(boldFont)
                         .SetFontSize(18)
+                        .SetMarginTop(50)
                         .SetFontColor(ColorConstants.BLACK)
                         .SetTextAlignment(TextAlignment.CENTER));
 
@@ -158,37 +160,37 @@ namespace ColombianCoffeeApp.Services
                         .SetFontSize(16)
                         .SetFontColor(brownColor));
 
-                    Table tablaDatos = new Table(2).UseAllAvailableWidth();
-                    tablaDatos.AddCell(new Cell().Add(new Paragraph("Descripción").SetFont(boldFont)));
+                    Table tablaDatos = new Table(new float[] { 170f, 330f }).UseAllAvailableWidth();
+                    tablaDatos.AddCell(new Cell().Add(new Paragraph("Descripción").SetFont(boldFont)).SetBackgroundColor(grisClaro));
                     tablaDatos.AddCell(new Cell().Add(new Paragraph(variedad.Descripcion).SetFont(italicFont)));
-                    tablaDatos.AddCell(new Cell().Add(new Paragraph("Porte").SetFont(boldFont)));
+                    tablaDatos.AddCell(new Cell().Add(new Paragraph("Porte").SetFont(boldFont)).SetBackgroundColor(grisClaro));
                     tablaDatos.AddCell(new Cell().Add(new Paragraph(variedad.Porte.ToString()).SetFont(italicFont)));
-                    tablaDatos.AddCell(new Cell().Add(new Paragraph("Tamaño de Grano").SetFont(boldFont)));
+                    tablaDatos.AddCell(new Cell().Add(new Paragraph("Tamaño de Grano").SetFont(boldFont)).SetBackgroundColor(grisClaro));
                     tablaDatos.AddCell(new Cell().Add(new Paragraph(variedad.TamanoGrano.ToString()).SetFont(italicFont)));
-                    tablaDatos.AddCell(new Cell().Add(new Paragraph("Altitud Óptima").SetFont(boldFont)));
+                    tablaDatos.AddCell(new Cell().Add(new Paragraph("Altitud Óptima").SetFont(boldFont)).SetBackgroundColor(grisClaro));
                     tablaDatos.AddCell(new Cell().Add(new Paragraph($"{variedad.AltitudOptima} msnm").SetFont(italicFont)));
-                    tablaDatos.AddCell(new Cell().Add(new Paragraph("Potencial de Rendimiento").SetFont(boldFont)));
+                    tablaDatos.AddCell(new Cell().Add(new Paragraph("Potencial de Rendimiento").SetFont(boldFont)).SetBackgroundColor(grisClaro));
                     tablaDatos.AddCell(new Cell().Add(new Paragraph(variedad.Rendimiento.ToString()).SetFont(italicFont)));
-                    tablaDatos.AddCell(new Cell().Add(new Paragraph("Calidad del Grano").SetFont(boldFont)));
+                    tablaDatos.AddCell(new Cell().Add(new Paragraph("Calidad del Grano").SetFont(boldFont)).SetBackgroundColor(grisClaro));
                     tablaDatos.AddCell(new Cell().Add(new Paragraph($"{variedad.CalidadGrano}/5").SetFont(italicFont)));
-                    tablaDatos.AddCell(new Cell().Add(new Paragraph("Roya").SetFont(boldFont)));
+                    tablaDatos.AddCell(new Cell().Add(new Paragraph("Roya").SetFont(boldFont)).SetBackgroundColor(grisClaro));
                     tablaDatos.AddCell(new Cell().Add(new Paragraph(variedad.ResistenciaRoya.ToString()).SetFont(italicFont)));
-                    tablaDatos.AddCell(new Cell().Add(new Paragraph("Antracnosis").SetFont(boldFont)));
+                    tablaDatos.AddCell(new Cell().Add(new Paragraph("Antracnosis").SetFont(boldFont)).SetBackgroundColor(grisClaro));
                     tablaDatos.AddCell(new Cell().Add(new Paragraph(variedad.ResistenciaAntracnosis.ToString()).SetFont(italicFont)));
-                    tablaDatos.AddCell(new Cell().Add(new Paragraph("Nematodos").SetFont(boldFont)));
+                    tablaDatos.AddCell(new Cell().Add(new Paragraph("Nematodos").SetFont(boldFont)).SetBackgroundColor(grisClaro));
                     tablaDatos.AddCell(new Cell().Add(new Paragraph(variedad.ResistenciaNematodos.ToString()).SetFont(italicFont)));
-                    tablaDatos.AddCell(new Cell().Add(new Paragraph("Historia").SetFont(boldFont)));
+                    tablaDatos.AddCell(new Cell().Add(new Paragraph("Historia").SetFont(boldFont)).SetBackgroundColor(grisClaro));
                     tablaDatos.AddCell(new Cell().Add(new Paragraph(variedad.Historia)));
-                    tablaDatos.AddCell(new Cell().Add(new Paragraph("Grupo Genético").SetFont(boldFont)));
+                    tablaDatos.AddCell(new Cell().Add(new Paragraph("Grupo Genético").SetFont(boldFont)).SetBackgroundColor(grisClaro));
                     tablaDatos.AddCell(new Cell().Add(new Paragraph(variedad.GrupoGenetico)));
-                    tablaDatos.AddCell(new Cell().Add(new Paragraph("Obtentor").SetFont(boldFont)));
+                    tablaDatos.AddCell(new Cell().Add(new Paragraph("Obtentor").SetFont(boldFont)).SetBackgroundColor(grisClaro));
                     tablaDatos.AddCell(new Cell().Add(new Paragraph(variedad.Obtentor)));
-                    tablaDatos.AddCell(new Cell().Add(new Paragraph("Familia").SetFont(boldFont)));
+                    tablaDatos.AddCell(new Cell().Add(new Paragraph("Familia").SetFont(boldFont)).SetBackgroundColor(grisClaro));
                     tablaDatos.AddCell(new Cell().Add(new Paragraph(variedad.Familia)));
                     document.Add(tablaDatos);
 
                     document.Add(new LineSeparator(new SolidLine())
-                        .SetMargins(80, 0, 15, 0));
+                        .SetMargins(80, 0, 50, 0));
                 }
             }
 

@@ -21,17 +21,17 @@ namespace ColombianCoffeeApp.src.Modules.Variedades.UI
             {
                 Console.Clear();
                 Console.Write("""
-                    ╔════════════════════════════════════════════╗
-                    ║     👀 EXPLORAR VARIEDADES DE CAFÉ 👀      ║
-                    ╚════════════════════════════════════════════╝
-                    ║ 1.- Listar Todas las Variables             ║
-                    ║ 2.- Ver Ficha Técnica (ID)                 ║
-                    ║ 3.- Filtrar por Atributo                   ║
-                    ║ 4.- Volver a 'Menú Principal' ↩            ║
-                    ╚════════════════════════════════════════════╝
-                    Seleccione la opción: 
-                    """
-                    );
+                ╔════════════════════════════════════════════╗
+                ║     👀 EXPLORAR VARIEDADES DE CAFÉ 👀      ║
+                ╚════════════════════════════════════════════╝
+                ║ 1.- Listar Todas las Variables             ║
+                ║ 2.- Ver Ficha Técnica (ID)                 ║
+                ║ 3.- Filtrar por Atributo                   ║
+                ║ 4.- Volver a 'Menú Principal' ↩            ║
+                ╚════════════════════════════════════════════╝
+                Seleccione la opción: 
+                """
+                 );
                 var opcion = Console.ReadLine();
 
                 switch (opcion)
