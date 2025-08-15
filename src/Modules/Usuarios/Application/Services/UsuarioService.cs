@@ -51,7 +51,10 @@ namespace ColombianCoffeeApp.src.Modules.Usuarios.Application
             }
 
             RolUsuario rol;
-            if (!Enum.TryParse(rolTexto, true, out rol))
+            bool esValido = Enum.TryParse(rolTexto, true, out rol) 
+                            && Enum.IsDefined(typeof(RolUsuario), rol);
+
+            if (!esValido)
             {
                 Console.WriteLine("⚠️ Rol inválido. Se asignará 'Usuario' por defecto.");
                 rol = RolUsuario.Usuario;

@@ -153,8 +153,15 @@ namespace ColombianCoffeeApp.src.Modules.Variedades.UI
             Console.Write("Familia: ");
             variedad.Familia = Console.ReadLine();
 
-            _service.CrearVariedad(variedad);
-            Console.Write("\n✅ Variedad creada con éxito. Presione una tecla...");
+            try
+            {
+                _service.CrearVariedad(variedad);
+                Console.Write("\n✅ Variedad creada con éxito. Presione una tecla...");
+            }
+            catch (ArgumentException ex)
+            {
+                Console.WriteLine($"\n⚠️ Error: {ex.Message}");
+            }
             Console.ReadKey();
         }
 

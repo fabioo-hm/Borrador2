@@ -58,6 +58,7 @@ namespace Borrador2.src.UI
 
         private async Task IniciarSesionAsync()
         {
+            Console.Clear();
             Console.WriteLine("🔐 Iniciar Sesión");
             Console.Write("\nUsuario: ");
             string usuario = Console.ReadLine() ?? "";
@@ -82,15 +83,17 @@ namespace Borrador2.src.UI
 
         private async Task CrearCuentaAsync()
         {
-            Console.Write("Nuevo usuario: ");
+            Console.Clear();
+            Console.WriteLine("📝 Crea una Nueva Cuenta");
+            Console.Write("\nNuevo usuario: ");
             string usuario = Console.ReadLine() ?? "";
             Console.Write("Contraseña: ");
             string contrasena = Console.ReadLine() ?? "";
-            Console.Write("Rol (Administrador/Usuario): ");
+            Console.Write("Rol (Administrador (1)/ Usuario (2)): ");
             string rol = Console.ReadLine() ?? "";
 
             await _usuarioService.CrearUsuarioAsync(usuario, contrasena, rol);
-            Console.WriteLine("✅ Usuario creado. Inicie sesión para continuar.");
+            Console.Write("✅ Usuario creado. Inicie sesión para continuar.");
             Console.ReadKey();
         }
     }
